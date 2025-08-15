@@ -1,6 +1,5 @@
 # Compound V2 Security Audit Framework
 
-[![Test](https://github.com/andrey-belen/compound-v2-audit/actions/workflows/test.yml/badge.svg)](https://github.com/andrey-belen/compound-v2-audit/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Foundry](https://img.shields.io/badge/Built%20with-Foundry-FFDB1C.svg)](https://getfoundry.sh/)
 

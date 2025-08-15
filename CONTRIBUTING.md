@@ -92,7 +92,7 @@ Help improve the testing framework:
 - Enhanced helper functions in `src/CompoundHelpers.sol`
 - Better logging and reporting in `src/AuditBase.sol`
 - New oracle manipulation utilities in `src/OracleManipulator.sol`
-- CI/CD improvements
+- Development tooling improvements
 - Documentation enhancements
 
 ### 📚 Documentation
