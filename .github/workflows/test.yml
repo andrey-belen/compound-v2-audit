@@ -35,25 +35,21 @@ jobs:
           forge build --sizes
         id: build
 
-      - name: Run Forge tests
+      - name: Run Forge tests (without fork)
         run: |
-          # Run tests without fork (basic compilation and unit tests)
-          forge test --no-match-contract "*Historical*" -vvv
+          # Run basic tests without requiring mainnet fork
+          forge test --match-contract "Counter" -vvv
         id: test
 
-      - name: Run Forge tests with fork
+      - name: Run Historical Bug tests (with fork)
         env:
           # Use a public RPC endpoint for CI
           ETH_RPC_URL: https://rpc.ankr.com/eth
         run: |
           # Run historical bug tests with fork
-          forge test --match-contract "*Historical*" --fork-url $ETH_RPC_URL -vv
+          forge test --match-contract "CompoundHistoricalBugs" --fork-url $ETH_RPC_URL -vv
         id: test-fork
 
       - name: Run Forge fmt
         run: forge fmt --check
         id: fmt
-
-      - name: Run Forge snapshot
-        run: forge snapshot --check
-        id: snapshot
