@@ -8,7 +8,7 @@ remappings = [
     "forge-std/=lib/forge-std/src/"
 ]
 
-# Mainnet forking configuration
+# Mainnet forking configuration (for default profile)
 eth_rpc_url = "${ETH_RPC_URL}"
 fork_block_number = 18500000  # Block with stable Compound V2 deployment
 
@@ -35,8 +35,48 @@ fs_permissions = [
 ]
 
 [profile.ci]
+# CI profile without fork configuration
+src = "src"
+out = "out" 
+libs = ["lib"]
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@compound-protocol/=lib/compound-protocol/contracts/",
+    "forge-std/=lib/forge-std/src/"
+]
+# No fork settings for CI - tests run locally
+gas_limit = 30000000
+optimizer = true
+optimizer_runs = 200
+verbosity = 2
+auto_detect_solc = false
+solc = "0.8.20"
+evm_version = "london"
 fuzz = { runs = 5000 }
 invariant = { runs = 1000, depth = 20 }
+
+[profile.fork-tests]
+# Profile specifically for fork-dependent tests
+src = "src"
+out = "out"
+libs = ["lib"]
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@compound-protocol/=lib/compound-protocol/contracts/",
+    "forge-std/=lib/forge-std/src/"
+]
+eth_rpc_url = "${ETH_RPC_URL}"
+fork_block_number = 18500000
+gas_reports = ["*"]
+gas_limit = 30000000
+optimizer = true
+optimizer_runs = 200
+verbosity = 2
+auto_detect_solc = false
+solc = "0.8.20"
+evm_version = "london"
+fuzz = { runs = 1000 }
+invariant = { runs = 256, depth = 15 }
 
 [profile.intense]
 fuzz = { runs = 10000 }
