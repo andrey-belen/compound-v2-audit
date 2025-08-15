@@ -1,0 +1,41 @@
+# Foundry
+cache/
+out/
+broadcast/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+audit-reports/logs/
+gas-analysis.txt
+
+# Coverage
+coverage/
+lcov.info
+
+# Node modules (if any)
+node_modules/
+
+# Temp files
+*.tmp
+*.temp
+
+# Build artifacts
+artifacts/
+typechain/
+
+# Local test results
+test-results/

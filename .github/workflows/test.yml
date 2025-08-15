@@ -1,0 +1,59 @@
+name: Test
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  FOUNDRY_PROFILE: ci
+
+jobs:
+  check:
+    strategy:
+      fail-fast: true
+
+    name: Foundry project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Show Foundry config
+        run: forge config
+
+      - name: Run Forge build
+        run: |
+          forge --version
+          forge build --sizes
+        id: build
+
+      - name: Run Forge tests
+        run: |
+          # Run tests without fork (basic compilation and unit tests)
+          forge test --no-match-contract "*Historical*" -vvv
+        id: test
+
+      - name: Run Forge tests with fork
+        env:
+          # Use a public RPC endpoint for CI
+          ETH_RPC_URL: https://rpc.ankr.com/eth
+        run: |
+          # Run historical bug tests with fork
+          forge test --match-contract "*Historical*" --fork-url $ETH_RPC_URL -vv
+        id: test-fork
+
+      - name: Run Forge fmt
+        run: forge fmt --check
+        id: fmt
+
+      - name: Run Forge snapshot
+        run: forge snapshot --check
+        id: snapshot

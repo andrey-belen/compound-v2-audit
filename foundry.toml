@@ -10,19 +10,18 @@ remappings = [
 
 # Mainnet forking configuration
 eth_rpc_url = "${ETH_RPC_URL}"
-fork_block_number = 18500000  # Block number before major Compound V2 issues
+fork_block_number = 18500000  # Block with stable Compound V2 deployment
 
 # Gas reporting and optimization
 gas_reports = ["*"]
 gas_limit = 30000000
 optimizer = true
 optimizer_runs = 200
-via_ir = true
 
 # Test configuration
 verbosity = 2
 auto_detect_solc = false
-solc = "0.8.19"
+solc = "0.8.20"
 evm_version = "london"
 
 # Fuzz testing
