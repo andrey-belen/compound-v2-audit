@@ -302,10 +302,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 This software is provided for educational and research purposes only. Users are responsible for ensuring their usage complies with applicable laws and regulations. The authors disclaim all liability for any misuse of this software.
 
+## 👨‍💻 Creator
+
+**Created by [Andrey Belen](https://github.com/andrey-belen)**
+
+This project was designed and implemented from scratch as a comprehensive educational security research framework.
+
 ## 🙏 Acknowledgments
 
 - Compound Labs for the original Compound V2 protocol
-- The DeFi security research community
+- The DeFi security research community  
 - Foundry team for the excellent testing framework
 
 ---
